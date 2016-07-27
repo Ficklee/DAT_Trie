@@ -106,13 +106,21 @@ class DAT(object):
 		word_ulist=list(word_unc)
 		for w in xrange(len(word_ulist)):
 			Charnum=ord(word_ulist[w])
-			if self.base[search_p]<0:
+			if self.base[search_p]==-search_p:
 				return False
 			else:
-				t=Charnum+self.base[search_p]
+				if self.base[search.p]<0:
+					tempid=-self.base[search_p]
+				else:
+					tempid=self.base[search_p]
+				t=Charnum+tempid
 				if self.check[t]!=search_p:
 					return False:
-		
+			search_p=t
+			if w==len(word_ulist)-1 and self.base[search_p]>0:
+				return False
+		return True
+
 
 
 			
