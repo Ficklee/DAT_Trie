@@ -100,6 +100,20 @@ class DAT(object):
 			else:
 				pointer1=Queue[0]
 				s=pointer1.SearchCode
+	def DAT_Search(self,the_word):
+		search_p=1
+		word_unc=the_word.decode('utf-8')
+		word_ulist=list(word_unc)
+		for w in xrange(len(word_ulist)):
+			Charnum=ord(word_ulist[w])
+			if self.base[search_p]<0:
+				return False
+			else:
+				t=Charnum+self.base[temp_value]
+				if self.check[t]!=temp_value:
+					return False:
+				else:
+					if 
 
 
 			
