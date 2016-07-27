@@ -62,27 +62,32 @@ class DAT(object):
 		self.base[1]=1
 		self.check=[0]*400000
 		self.trie_base=trie_base()
-	def BaseValue(self,s,listnum):
+	def BaseValue(self,s0,listnum):
 		value=1
 		while True:
 			Screwed_up=0
 			Check_list=[self.check[NUM] for NUM in [k+value for k in listnum]]
 			for data in Check_list:
-				if data!=0 and data!=s:
+				if data!=0 and data!=s0:
 					Screwed_up=1
 					break
 			if Screwed_up==0:
+				for points in [value+k1 for k1 in listnum]:
+					self.check[points]=s0
 				return value
 			else:
 				value+=1
-
 	def DAT_Gen(self):
 		pointer1=self.trie_base.root
 		s=1
 		Queue=[pointer1]
 		while True:
 			Queue=Queue+pointer1.Children
-			
+			self.base[s]=self.baseValue(s,pointer1.ChildrenNum)
+			if pointer1.IsEnd==True:
+				if self.base[s]==
+
+
 			
 
 
