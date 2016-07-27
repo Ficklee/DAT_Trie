@@ -6,10 +6,12 @@ class Node(object):
 		self.Children=[]
 		self.ChildrenNum=[]
 		self.IsEnd=False
+		self.SearchCode=0
 class Trie(object):
 	"""docstring for Trie"""
 	def __init__(self):
 		self.root=Node(1)
+		self.root.SearchCode=1
 	def Insert_word(self,word):
 		uword=word.decode('utf-8')
 		word_list=list(uword)
@@ -62,8 +64,10 @@ class DAT(object):
 		self.base[1]=1
 		self.check=[0]*400000
 		self.trie_base=trie_base()
-	def BaseValue(self,s0,listnum):
+	def BaseValue(self,s0,pointer):
 		value=1
+		listnum=pointer.ChildrenNum
+		listNode=pointer.Children
 		while True:
 			Screwed_up=0
 			Check_list=[self.check[NUM] for NUM in [k+value for k in listnum]]
@@ -74,6 +78,7 @@ class DAT(object):
 			if Screwed_up==0:
 				for points in [value+k1 for k1 in listnum]:
 					self.check[points]=s0
+					listNode.SearchCode=points
 				return value
 			else:
 				value+=1
@@ -82,11 +87,9 @@ class DAT(object):
 		s=1
 		Queue=[pointer1]
 		while True:
-			Queue=Queue+pointer1.Children
 			self.base[s]=self.baseValue(s,pointer1.ChildrenNum)
 			if pointer1.IsEnd==True:
 				if self.base[s]==
-
 
 			
 
