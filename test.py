@@ -1,4 +1,8 @@
 #coding:utf-8
 
-s="你好".decode('utf-8')
-print list(s)
+with open('dic.txt','r') as f:
+	a=f.readlines()
+for line in a:
+	line=line.strip('\n')
+	line=line.decode('utf-8')
+	print line
