@@ -49,21 +49,14 @@ class Trie(object):
 			S1=dic_word.strip('\n')
 			print S1
 			self.Insert_word(S1)
-Tree1=Trie()
-Tree1.Insert_Dic()
-print Tree1.word_search("一")
-print Tree1.word_search("一名")
-print Tree1.word_search("一举")
-print Tree1.word_search("一举一动")
-print Tree1.word_search("一举成名")
-print Tree1.word_search("一举夺魁")
+
 
 class DAT(object):
 	def __init__(self,trie_base):
 		self.base=[0]*400000
 		self.base[1]=1
 		self.check=[0]*400000
-		self.trie_base=trie_base()
+		self.trie_base=trie_base
 	def BaseValue(self,s0,pointer):
 		value=1
 		listnum=pointer.ChildrenNum
@@ -75,10 +68,10 @@ class DAT(object):
 					Screwed_up=1
 					break
 			if Screwed_up==0:
-				for idx in len(listnum):
+				for idx in listnum:
 					new_idx=idx+value
 					self.check[new_idx]=s0
-					pointer.Children[idx].SearchCode=new_idx
+					pointer.Children[pointer.ChildrenNum.index(idx)].SearchCode=new_idx
 				return value
 			else:
 				value+=1
@@ -90,7 +83,7 @@ class DAT(object):
 			if pointer1.Children==[]:
 				self.base[s]=-s
 			else:
-				self.base[s]=self.baseValue(s,pointer1)
+				self.base[s]=self.BaseValue(s,pointer1)
 				if pointer1.IsEnd==True:
 					self.base[s]*=-1
 			Queue=Queue+pointer1.Children
@@ -115,13 +108,22 @@ class DAT(object):
 					tempid=self.base[search_p]
 				t=Charnum+tempid
 				if self.check[t]!=search_p:
-					return False:
+					return False
 			search_p=t
 			if w==len(word_ulist)-1 and self.base[search_p]>0:
 				return False
 		return True
 
+Tree1=Trie()
+Tree1.Insert_Dic()
+print Tree1.word_search("一")
+print Tree1.word_search("一举")
+print Tree1.word_search("一举一动")
+print Tree1.word_search("一举成名")
+print Tree1.word_search("一举夺魁")
 
+dat_01=DAT(Tree1)
+dat_01.DAT_Gen()
 
 			
 
