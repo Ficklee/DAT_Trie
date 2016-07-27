@@ -55,3 +55,11 @@ print Tree1.word_search("一举")
 print Tree1.word_search("一举一动")
 print Tree1.word_search("一举成名")
 print Tree1.word_search("一举夺魁")
+
+class DAT(object):
+	def __init__(self,trie_base):
+		self.base=[0]*400000
+		self.check=[0]*400000
+		self.trie_base=trie_base
+	def gen_DAT(self,):
+		pass
