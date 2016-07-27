@@ -47,7 +47,6 @@ class Trie(object):
 			word_c=fDic.readlines()
 		for dic_word in word_c:
 			S1=dic_word.strip('\n')
-			print S1
 			self.Insert_word(S1)
 
 
@@ -116,17 +115,5 @@ class DAT(object):
 
 Tree1=Trie()
 Tree1.Insert_Dic()
-print Tree1.word_search("一")
-print Tree1.word_search("一举")
-print Tree1.word_search("一举一动")
-print Tree1.word_search("一举成名")
-print Tree1.word_search("一举夺魁")
-
 dat_01=DAT(Tree1)
-dat_01.DAT_Gen()
-
-			
-
-
-
-		
+#dat_01.DAT_Gen()
