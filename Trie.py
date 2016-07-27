@@ -109,11 +109,10 @@ class DAT(object):
 			if self.base[search_p]<0:
 				return False
 			else:
-				t=Charnum+self.base[temp_value]
-				if self.check[t]!=temp_value:
+				t=Charnum+self.base[search_p]
+				if self.check[t]!=search_p:
 					return False:
-				else:
-					if 
+		
 
 
 			
