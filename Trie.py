@@ -67,7 +67,6 @@ class DAT(object):
 	def BaseValue(self,s0,pointer):
 		value=1
 		listnum=pointer.ChildrenNum
-		listNode=pointer.Children
 		while True:
 			Screwed_up=0
 			Check_list=[self.check[NUM] for NUM in [k+value for k in listnum]]
@@ -76,9 +75,10 @@ class DAT(object):
 					Screwed_up=1
 					break
 			if Screwed_up==0:
-				for points in [value+k1 for k1 in listnum]:
-					self.check[points]=s0
-					listNode.SearchCode=points
+				for idx in len(listnum):
+					new_idx=idx+value
+					self.check[new_idx]=s0
+					pointer.Children[idx].SearchCode=new_idx
 				return value
 			else:
 				value+=1
@@ -87,9 +87,20 @@ class DAT(object):
 		s=1
 		Queue=[pointer1]
 		while True:
-			self.base[s]=self.baseValue(s,pointer1.ChildrenNum)
-			if pointer1.IsEnd==True:
-				if self.base[s]==
+			if pointer1.Children==[]:
+				self.base[s]=-s
+			else:
+				self.base[s]=self.baseValue(s,pointer1)
+				if pointer1.IsEnd==True:
+					self.base[s]*=-1
+			Queue=Queue+pointer1.Children
+			Queue.pop()
+			if Queue==[]:
+				break
+			else:
+				pointer1=Queue[0]
+				s=pointer1.SearchCode
+
 
 			
 
