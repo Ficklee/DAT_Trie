@@ -1,8 +1,8 @@
 #coding:utf-8
 
-with open('dic.txt','r') as f:
-	a=f.readlines()
-for line in a:
-	line=line.strip('\n')
-	line=line.decode('utf-8')
-	print line
+nlist=[1,2,3,4,5]
+for n in nlist:
+	s=n+1
+	if s>=4:
+		break
+	print s

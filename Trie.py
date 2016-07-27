@@ -59,7 +59,32 @@ print Tree1.word_search("一举夺魁")
 class DAT(object):
 	def __init__(self,trie_base):
 		self.base=[0]*400000
+		self.base[1]=1
 		self.check=[0]*400000
-		self.trie_base=trie_base
-	def gen_DAT(self,):
-		pass
+		self.trie_base=trie_base()
+	def BaseValue(self,s,listnum):
+		value=1
+		while True:
+			Screwed_up=0
+			Check_list=[self.check[NUM] for NUM in [k+value for k in listnum]]
+			for data in Check_list:
+				if data!=0 and data!=s:
+					Screwed_up=1
+					break
+			if Screwed_up==0:
+				return value
+			else:
+				value+=1
+
+	def DAT_Gen(self):
+		pointer1=self.trie_base.root
+		s=1
+		Queue=[pointer1]
+		while True:
+			Queue=Queue+pointer1.Children
+			
+			
+
+
+
+		
