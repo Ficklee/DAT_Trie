@@ -1,5 +1,5 @@
 #coding: utf-8
-
+from struct import pack
 class Node(object):
 	def __init__(self,CurCode):
 		self.CurCode=CurCode
@@ -86,7 +86,7 @@ class DAT(object):
 				if pointer1.IsEnd==True:
 					self.base[s]*=-1
 			Queue=Queue+pointer1.Children
-			Queue.pop()
+			Queue.pop(0)
 			if Queue==[]:
 				break
 			else:
@@ -101,7 +101,7 @@ class DAT(object):
 			if self.base[search_p]==-search_p:
 				return False
 			else:
-				if self.base[search.p]<0:
+				if self.base[search_p]<0:
 					tempid=-self.base[search_p]
 				else:
 					tempid=self.base[search_p]
@@ -112,8 +112,12 @@ class DAT(object):
 			if w==len(word_ulist)-1 and self.base[search_p]>0:
 				return False
 		return True
-
-Tree1=Trie()
-Tree1.Insert_Dic()
-dat_01=DAT(Tree1)
-#dat_01.DAT_Gen()
+	def DAT_SAVE(self):
+		with open('save_base.bin','wb') as fbase:
+			for num_b in self.base:
+				num_b_bin=pack('i',num_b)
+				fbase.write(num_b_bin)
+		with open('save_check.bin','wb') as fcheck:
+			for num_check in self.check:
+				num_c_bin=pack('i',num_check)
+				fcheck.write(num_c_bin)
