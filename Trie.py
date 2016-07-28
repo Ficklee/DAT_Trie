@@ -121,3 +121,5 @@ class DAT(object):
 			for num_check in self.check:
 				num_c_bin=pack('i',num_check)
 				fcheck.write(num_c_bin)
+		
+

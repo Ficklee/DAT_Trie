@@ -1,8 +1,7 @@
 #coding:utf-8
-
-nlist=[1,2,3,4,5]
-for n in nlist:
-	s=n+1
-	if s>=4:
-		break
-	print s
+from Trie import *
+Tree1=Trie()
+Tree1.Insert_Dic()
+dat_01=DAT(Tree1)
+dat_01.DAT_Gen()
+dat_01.DAT_SAVE()
