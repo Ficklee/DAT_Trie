@@ -11,11 +11,11 @@ int Readin(){
   fseek(ptr_file,0L,SEEK_END);
   SZFile=ftell(ptr_file);
   SiZfile=int(SZFile);
-  int NumArr=(SiZfile-4)/2;
+  int NumArr=(SiZfile-sizeof(int))/2;
   rewind(ptr_file);
+  int i;
+  fread
   int *buff=(int *)malloc(SiZfile*sizeof(int));
-
-  void * _buffB;
 }
 int main(){
   printf("hello world");
