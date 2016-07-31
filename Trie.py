@@ -52,16 +52,22 @@ class Trie(object):
 
 class DAT(object):
 	def __init__(self,trie_base):
-		self.base=[0]*400000
+		self.base=[0]*2
 		self.base[1]=1
-		self.check=[0]*400000
+		self.check=[0]*2
 		self.trie_base=trie_base
 	def BaseValue(self,s0,pointer):
 		value=1
 		listnum=pointer.ChildrenNum
 		while True:
 			Screwed_up=0
-			Check_list=[self.check[NUM] for NUM in [k+value for k in listnum]]
+			lst01=[k+value for k in listnum]
+			Longnum=max(lst01)
+			if Longnum>=len(self.base):
+				addleng=Longnum-len(self.base)+1
+				self.base.extend([0]*addleng)
+				self.check.extend([0]*addleng)
+			Check_list=[self.check[NUM] for NUM in lst01]
 			for data in Check_list:
 				if data!=0 and data!=s0:
 					Screwed_up=1
@@ -113,8 +119,6 @@ class DAT(object):
 				return False
 		return True
 	def DAT_SAVE(self):
-		with open('dat_trie.bin','wb') as fdat:
-			
 		with open('save_base.bin','wb') as fbase:
 			for num_b in self.base:
 				num_b_bin=pack('i',num_b)
