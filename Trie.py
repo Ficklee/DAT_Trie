@@ -113,6 +113,8 @@ class DAT(object):
 				return False
 		return True
 	def DAT_SAVE(self):
+		with open('dat_trie.bin','wb') as fdat:
+			
 		with open('save_base.bin','wb') as fbase:
 			for num_b in self.base:
 				num_b_bin=pack('i',num_b)
@@ -121,5 +123,3 @@ class DAT(object):
 			for num_check in self.check:
 				num_c_bin=pack('i',num_check)
 				fcheck.write(num_c_bin)
-		
-
