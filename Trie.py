@@ -119,11 +119,11 @@ class DAT(object):
 				return False
 		return True
 	def DAT_SAVE(self):
-		with open('save_base.bin','wb') as fbase:
-			for num_b in self.base:
-				num_b_bin=pack('i',num_b)
-				fbase.write(num_b_bin)
-		with open('save_check.bin','wb') as fcheck:
-			for num_check in self.check:
-				num_c_bin=pack('i',num_check)
-				fcheck.write(num_c_bin)
+		ListLength=len(self.base)
+		BinLength=pack('i',ListLength)
+		with open('dat.bin', 'wb') as fdat:
+			fdat.write(BinLength)
+			for num_B in self.base:
+				fdat.write(pack('i',num_B))
+			for num_C in self.check:
+				fdat.write(pack('i',num_C))
